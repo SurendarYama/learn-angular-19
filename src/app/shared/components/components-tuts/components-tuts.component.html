@@ -1,7 +1,15 @@
 <h1 class="components-tuts-heading">Components tuts...</h1>
-<span>input value: {{ value() }}</span>
-<span>input width: {{ width() }}</span>
-<span>input isAuth: {{ isAuth() }}</span>
+<div>input value: {{ value() }}</div>
+<div>input width: {{ width() }}</div>
+<div>input isAuth: {{ isAuth() }}</div>
+<div>input count: {{ count() }}</div>
+
+<button
+  class="bg-blue-400 text-black p-4 rounded hover:opacity-90"
+  (click)="increment()"
+>
+  increment
+</button>
 
 <style>
   .components-tuts-heading {

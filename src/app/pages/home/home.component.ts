@@ -11,6 +11,10 @@ import {
 export class HomePageComponent implements OnInit {
   name = signal("Surendar");
   name_uppercase = computed(() => this.name().toUpperCase());
+  count = signal(8);
+  countChangeIdentify() {
+    console.log("count change");
+  }
   ngOnInit() {
     const unsubscribe = setInterval(() => {
       this.name.update((previous_value) => `${previous_value} Yama`);

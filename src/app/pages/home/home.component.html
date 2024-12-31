@@ -7,4 +7,7 @@
   [name]="' Surendar Yama '"
   [width]="400"
   [isAuth]="'yes'"
+  [(count)]="count"
+  (countChange)="countChangeIdentify()"
 />
+<h3>{{ count() }}</h3>

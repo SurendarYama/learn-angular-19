@@ -3,6 +3,7 @@ import {
   Component,
   input,
   numberAttribute,
+  model,
 } from "@angular/core";
 
 @Component({
@@ -21,4 +22,8 @@ export class ComponentsTutsComponent {
   });
 
   isAuth = input(false, { transform: booleanAttribute });
+  count = model(0);
+  increment() {
+    this.count.update((previousValue: number) => previousValue + 1);
+  }
 }
