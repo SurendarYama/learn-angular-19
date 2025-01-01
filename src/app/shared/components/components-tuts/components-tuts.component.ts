@@ -17,7 +17,7 @@ import {
     <div (click)="vrcPanelClosed.emit('vrc-panel-close')">VCRComponent</div>
   `,
 })
-export class vCRComponent {
+export class VCRComponent {
   vrcPanelClosed = output<string>();
 }
 
@@ -51,7 +51,7 @@ export class ComponentsTutsComponent implements OnInit {
 
   ngOnInit() {
     console.log("init");
-    this.VRCComponentRef = this.ViewContainer.createComponent(vCRComponent);
+    this.VRCComponentRef = this.ViewContainer.createComponent(VCRComponent);
     this.VRCComponentRef.instance.vrcPanelClosed.subscribe((value: string) => {
       console.log(value);
     });
