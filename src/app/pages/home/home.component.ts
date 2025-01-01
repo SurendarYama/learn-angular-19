@@ -15,6 +15,11 @@ export class HomePageComponent implements OnInit {
   countChangeIdentify() {
     console.log("count change");
   }
+
+  closePanel(emittedValue: string) {
+    console.log("panel closed", emittedValue);
+  }
+
   ngOnInit() {
     const unsubscribe = setInterval(() => {
       this.name.update((previous_value) => `${previous_value} Yama`);

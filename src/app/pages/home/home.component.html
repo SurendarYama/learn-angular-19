@@ -9,5 +9,6 @@
   [isAuth]="'yes'"
   [(count)]="count"
   (countChange)="countChangeIdentify()"
+  (panelClosed)="closePanel($event)"
 />
 <h3>{{ count() }}</h3>
