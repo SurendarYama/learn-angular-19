@@ -26,7 +26,7 @@ export class VCRComponent {
   templateUrl: "./components-tuts.component.html",
 })
 export class ComponentsTutsComponent implements OnInit {
-  VRCComponentRef: ComponentRef<vCRComponent> | undefined;
+  VRCComponentRef: ComponentRef<VCRComponent> | undefined;
   value = input("", {
     alias: "name",
     transform: (value: string | undefined): string =>
