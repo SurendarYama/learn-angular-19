@@ -12,18 +12,32 @@ import {
 } from "@angular/core";
 
 @Component({
-  selector: "app-signal-tuts",
+  selector: "app-vcr-component",
   template: `
     <div (click)="vrcPanelClosed.emit('vrc-panel-close')">VCRComponent</div>
   `,
 })
-export class VCRComponent {
+class VCRComponent {
   vrcPanelClosed = output<string>();
 }
 
 @Component({
+  selector: "app-customed-card",
+  template: `
+    <div class="bg-red-300 text-red-950 flex flex-col p-10 w-fit">
+      <h1>Customed Card Component</h1>
+      <ng-content select="card-title"></ng-content>
+      <ng-content select="card-body"></ng-content>
+      <ng-content select="card-footer"></ng-content>
+    </div>
+  `,
+})
+class CustomComponent {}
+
+@Component({
   selector: "app-components-tuts",
   templateUrl: "./components-tuts.component.html",
+  imports: [CustomComponent],
 })
 export class ComponentsTutsComponent implements OnInit {
   VRCComponentRef: ComponentRef<VCRComponent> | undefined;
