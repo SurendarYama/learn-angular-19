@@ -11,10 +11,17 @@ import {
   ComponentRef,
 } from "@angular/core";
 
+import { AppHostElementComponent } from "./components";
+
 @Component({
   selector: "app-vcr-component",
   template: `
-    <div (click)="vrcPanelClosed.emit('vrc-panel-close')">VCRComponent</div>
+    <div
+      class="bg-green-300 p-6 w-fit hover:opacity-80 cursor-pointer"
+      (click)="vrcPanelClosed.emit('vrc-panel-close')"
+    >
+      VCRComponent
+    </div>
   `,
 })
 class VCRComponent {
@@ -37,7 +44,7 @@ class CustomComponent {}
 @Component({
   selector: "app-components-tuts",
   templateUrl: "./components-tuts.component.html",
-  imports: [CustomComponent],
+  imports: [CustomComponent, AppHostElementComponent],
 })
 export class ComponentsTutsComponent implements OnInit {
   VRCComponentRef: ComponentRef<VCRComponent> | undefined;
