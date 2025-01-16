@@ -5,16 +5,27 @@ import {
   output,
   numberAttribute,
   model,
-  OutputEmitterRef,
-  OnInit,
   ViewContainerRef,
   ComponentRef,
-} from "@angular/core";
+} from '@angular/core';
 
-import { AppHostElementComponent } from "./components";
+import { AppHostElementComponent, AppLifeCycleComponent } from './components';
 
 @Component({
-  selector: "app-vcr-component",
+  selector: 'app-custom-card',
+  template: `
+    <div class="bg-red-300 text-red-950 flex flex-col p-10 w-fit">
+      <h1>Customed Card Component</h1>
+      <ng-content select="card-title"></ng-content>
+      <ng-content select="card-body"></ng-content>
+      <ng-content select="card-footer"></ng-content>
+    </div>
+  `,
+})
+class AppCustomComponent {}
+
+@Component({
+  selector: 'app-vcr-component',
   template: `
     <div
       class="bg-green-300 p-6 w-fit hover:opacity-80 cursor-pointer"
@@ -29,29 +40,16 @@ class VCRComponent {
 }
 
 @Component({
-  selector: "app-customed-card",
-  template: `
-    <div class="bg-red-300 text-red-950 flex flex-col p-10 w-fit">
-      <h1>Customed Card Component</h1>
-      <ng-content select="card-title"></ng-content>
-      <ng-content select="card-body"></ng-content>
-      <ng-content select="card-footer"></ng-content>
-    </div>
-  `,
+  selector: 'app-components-tuts',
+  templateUrl: './components-tuts.component.html',
+  imports: [AppCustomComponent, AppHostElementComponent, AppLifeCycleComponent],
 })
-class CustomComponent {}
-
-@Component({
-  selector: "app-components-tuts",
-  templateUrl: "./components-tuts.component.html",
-  imports: [CustomComponent, AppHostElementComponent],
-})
-export class ComponentsTutsComponent implements OnInit {
+export class ComponentsTutsComponent {
   VRCComponentRef: ComponentRef<VCRComponent> | undefined;
-  value = input("", {
-    alias: "name",
+  value = input('', {
+    alias: 'name',
     transform: (value: string | undefined): string =>
-      value?.toUpperCase() ?? "",
+      value?.toUpperCase() ?? '',
   });
 
   width = input(0, {
@@ -63,18 +61,15 @@ export class ComponentsTutsComponent implements OnInit {
 
   panelClosed = output<string>();
 
-  constructor(public ViewContainer: ViewContainerRef) {}
-
-  increment() {
-    this.count.update((previousValue: number) => previousValue + 1);
-    this.panelClosed.emit("test");
-  }
-
-  ngOnInit() {
-    console.log("init");
+  constructor(public ViewContainer: ViewContainerRef) {
     this.VRCComponentRef = this.ViewContainer.createComponent(VCRComponent);
     this.VRCComponentRef.instance.vrcPanelClosed.subscribe((value: string) => {
       console.log(value);
     });
+  }
+
+  increment() {
+    this.count.update((previousValue: number) => previousValue + 1);
+    this.panelClosed.emit('test');
   }
 }
