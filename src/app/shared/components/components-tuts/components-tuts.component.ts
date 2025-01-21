@@ -9,20 +9,11 @@ import {
   ComponentRef,
 } from '@angular/core';
 
-import { AppHostElementComponent, AppLifeCycleComponent } from './components';
-
-@Component({
-  selector: 'app-custom-card',
-  template: `
-    <div class="bg-red-300 text-red-950 flex flex-col p-10 w-fit">
-      <h1>Customed Card Component</h1>
-      <ng-content select="card-title"></ng-content>
-      <ng-content select="card-body"></ng-content>
-      <ng-content select="card-footer"></ng-content>
-    </div>
-  `,
-})
-class AppCustomComponent {}
+import {
+  AppHostElementComponent,
+  AppLifeCycleComponent,
+  AppCustomComponent,
+} from './components';
 
 @Component({
   selector: 'app-vcr-component',
@@ -42,7 +33,7 @@ class VCRComponent {
 @Component({
   selector: 'app-components-tuts',
   templateUrl: './components-tuts.component.html',
-  imports: [AppCustomComponent, AppHostElementComponent, AppLifeCycleComponent],
+  imports: [AppHostElementComponent, AppLifeCycleComponent, AppCustomComponent],
 })
 export class ComponentsTutsComponent {
   VRCComponentRef: ComponentRef<VCRComponent> | undefined;
